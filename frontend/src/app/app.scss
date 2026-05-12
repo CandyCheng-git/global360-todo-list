@@ -1,6 +1,6 @@
 :host {
   display: block;
-  min-height: 100dvh;
+  min-height: 100%;
   color: #17233a;
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   background:
@@ -26,13 +26,14 @@ input:disabled {
 .todo-page {
   min-height: 100dvh;
   display: grid;
-  align-items: start;
-  justify-items: center;
-  padding-top: 28px;
+  place-items: center;
+  padding: clamp(12px, 2.4vh, 24px) 16px;
 }
 
 .todo-shell {
   width: min(100%, 720px);
+  display: grid;
+  gap: 10px;
 }
 
 .todo-panel {
@@ -255,8 +256,8 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  min-height: 180px;
-  padding: 28px 24px;
+  min-height: clamp(148px, 20vh, 172px);
+  padding: 24px;
   border-radius: 8px;
   text-align: center;
 }
@@ -352,7 +353,7 @@ input:focus-visible {
 }
 
 .todo-note {
-  margin: 14px 0 0;
+  margin: 0;
   color: #66778d;
   font-size: 0.78rem;
   line-height: 1.5;
