@@ -25,4 +25,7 @@ Thumbs.db
 
 # docs
 docs/0_initial.md
-/docs/test_results
+
+# Ignore specific test results
+docs/test_results/*
+
