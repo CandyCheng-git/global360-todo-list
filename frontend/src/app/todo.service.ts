@@ -19,7 +19,7 @@ export class TodoService {
     return this.http.post<TodoItem>(this.apiUrl, { title: title.trim() });
   }
 
-  deleteTodo(id: number): Observable<void> {
+  deleteTodo(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

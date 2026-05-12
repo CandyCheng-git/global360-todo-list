@@ -19,7 +19,7 @@ class TodoServiceStub {
     return this.addSubject.asObservable();
   }
 
-  deleteTodo(_id: number): Observable<void> {
+  deleteTodo(_id: string): Observable<void> {
     return this.deleteSubject.asObservable();
   }
 }
@@ -48,8 +48,8 @@ describe('App', () => {
 
   it('loads and displays todos', () => {
     service.todos = [
-      { id: 1, title: 'Write API tests' },
-      { id: 2, title: 'Polish README' },
+      { id: '84a39b4b-1ec6-45e5-af7e-a13230e9df1f', title: 'Write API tests' },
+      { id: '776771d1-68c9-4108-b327-7643acc42341', title: 'Polish README' },
     ];
 
     createComponent();
@@ -97,7 +97,7 @@ describe('App', () => {
     fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
 
     expect(addTodoSpy).toHaveBeenCalledWith('Review submission');
-    service.addSubject.next({ id: 3, title: 'Review submission' });
+    service.addSubject.next({ id: '03db68fc-1abf-4ad8-8d80-0c98ce99f11d', title: 'Review submission' });
     service.addSubject.complete();
     fixture.detectChanges();
 
@@ -106,7 +106,7 @@ describe('App', () => {
   });
 
   it('deletes a todo', () => {
-    service.todos = [{ id: 1, title: 'Remove me' }];
+    service.todos = [{ id: '650844a7-94fd-47e1-a4ba-d21d544fb854', title: 'Remove me' }];
     createComponent();
 
     const deleteButton = fixture.debugElement.query(By.css('.delete-button')).nativeElement as HTMLButtonElement;
