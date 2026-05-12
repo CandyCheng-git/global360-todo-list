@@ -14,7 +14,7 @@ export class App implements OnInit {
   protected readonly todos = signal<TodoItem[]>([]);
   protected readonly isLoading = signal(false);
   protected readonly isSaving = signal(false);
-  protected readonly deletingIds = signal<ReadonlySet<number>>(new Set());
+  protected readonly deletingIds = signal<ReadonlySet<string>>(new Set());
   protected readonly errorMessage = signal<string | null>(null);
   protected readonly titleControl = new FormControl('', { nonNullable: true });
 

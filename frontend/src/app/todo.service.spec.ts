@@ -21,7 +21,7 @@ describe('TodoService', () => {
   });
 
   it('gets todos from the API', () => {
-    const expectedTodos = [{ id: 1, title: 'Ship assessment' }];
+    const expectedTodos = [{ id: '0d32fe58-d2bf-42b1-8d50-db99ae3b7f07', title: 'Ship assessment' }];
 
     service.getTodos().subscribe((todos) => {
       expect(todos).toEqual(expectedTodos);
@@ -33,7 +33,7 @@ describe('TodoService', () => {
   });
 
   it('posts trimmed todo titles', () => {
-    const createdTodo = { id: 2, title: 'Write tests' };
+    const createdTodo = { id: '4a22ee57-5511-4bbf-bd81-45e37cbac433', title: 'Write tests' };
 
     service.addTodo('  Write tests  ').subscribe((todo) => {
       expect(todo).toEqual(createdTodo);
@@ -48,11 +48,11 @@ describe('TodoService', () => {
   it('deletes a todo by id', () => {
     let deleted = false;
 
-    service.deleteTodo(7).subscribe(() => {
+    service.deleteTodo('f559cf06-3018-4985-97bf-40fdb94e66a1').subscribe(() => {
       deleted = true;
     });
 
-    const request = httpMock.expectOne('http://localhost:5000/api/todos/7');
+    const request = httpMock.expectOne('http://localhost:5000/api/todos/f559cf06-3018-4985-97bf-40fdb94e66a1');
     expect(request.request.method).toBe('DELETE');
     request.flush(null);
     expect(deleted).toBe(true);
