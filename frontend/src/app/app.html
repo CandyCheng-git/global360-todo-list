@@ -1,0 +1,57 @@
+<main class="todo-page">
+  <section class="todo-panel" aria-labelledby="todo-heading">
+    <header class="todo-header">
+      <div>
+        <p class="eyebrow">Global360 assessment</p>
+        <h1 id="todo-heading">TODO List</h1>
+      </div>
+      <button class="secondary-button" type="button" (click)="loadTodos()" [disabled]="isLoading()">
+        Refresh
+      </button>
+    </header>
+
+    <form class="todo-form" (submit)="addTodo($event)">
+      <label for="todo-title">New todo</label>
+      <div class="input-row">
+        <input
+          id="todo-title"
+          type="text"
+          [formControl]="titleControl"
+          placeholder="Add a task"
+          autocomplete="off"
+          [disabled]="isSaving()"
+        />
+        <button class="primary-button" type="submit" [disabled]="isAddDisabled">
+          {{ isSaving() ? 'Adding...' : 'Add' }}
+        </button>
+      </div>
+    </form>
+
+    @if (errorMessage()) {
+      <p class="status error" role="alert">{{ errorMessage() }}</p>
+    }
+
+    @if (isLoading()) {
+      <p class="status">Loading todos...</p>
+    } @else if (todos().length === 0) {
+      <p class="empty-state">No todos yet. Add one above to get started.</p>
+    } @else {
+      <ul class="todo-list" aria-label="Todo items">
+        @for (todo of todos(); track todo.id) {
+          <li>
+            <span>{{ todo.title }}</span>
+            <button
+              class="delete-button"
+              type="button"
+              (click)="deleteTodo(todo)"
+              [disabled]="deletingIds().has(todo.id)"
+              [attr.aria-label]="'Delete ' + todo.title"
+            >
+              {{ deletingIds().has(todo.id) ? 'Deleting...' : 'Delete' }}
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</main>
