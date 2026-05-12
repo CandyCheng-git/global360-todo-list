@@ -37,7 +37,7 @@ export class App implements OnInit {
       .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
         next: (todos) => this.todos.set(todos),
-        error: () => this.errorMessage.set('Unable to load todos. Please try again.'),
+        error: () => this.errorMessage.set('Unable to load todos. Please check the API and try again.'),
       });
   }
 
