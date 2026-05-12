@@ -1,51 +1,62 @@
-# Global360 TODO List App
+# Global360 TODO List
 
-Simple TODO list application built with Angular and .NET Web API for the Global360 technical assessment.
+Simple full-stack TODO list application built for a technical assessment. The app keeps the scope intentionally small: view, add, and delete TODO items.
 
 ## Tech Stack
 
-- Angular
+- Angular standalone components
 - .NET Web API
 - In-memory backend storage
-- Docker / Docker Compose
-- Backend and frontend tests
+- Docker and Docker Compose
+- xUnit backend tests and Angular frontend tests
 
 ## Features
 
-- View TODO list
-- Add TODO item
-- Delete TODO item
-- Backend validation
-- Basic error handling
+- View TODO items
+- Add a TODO item with validation
+- Delete a TODO item
+- Loading and user-friendly error states
+- Swagger API documentation
+
+TODO data is stored in memory and resets when the backend restarts.
 
 ## Run with Docker
 
+```powershell
 docker compose up --build
+```
 
-## Backend
+- Frontend: http://localhost:4200
+- Backend API: http://localhost:5000
+- Swagger: http://localhost:5000/swagger
 
-Run the API from the backend folder:
+## Run Backend Locally
 
 ```powershell
 cd backend
 dotnet run --project Todo.Api
 ```
 
-The API exposes:
+## Run Frontend Locally
 
-- `GET /api/todos`
-- `POST /api/todos`
-- `DELETE /api/todos/{id}`
+```powershell
+cd frontend
+npm install
+npm start -- --host 0.0.0.0
+```
 
-Swagger UI is available in Development at `/swagger`.
+## Tests
 
-Run backend tests:
+Backend:
 
 ```powershell
 cd backend
 dotnet test
 ```
 
-## Notes
+Frontend:
 
-Data is stored in memory as requested. Restarting the backend will reset the TODO list.
+```powershell
+cd frontend
+npm test -- --watch=false
+```
