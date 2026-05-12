@@ -60,3 +60,17 @@ Frontend:
 cd frontend
 npm test -- --watch=false
 ```
+
+## Future Improvements
+
+Given more time, this application could be extended with:
+
+- Persistent database storage using PostgreSQL or SQLite
+- Update/edit TODO functionality
+- Completed/incomplete task status
+- Filtering for all, active, and completed tasks
+- Confirmation before deleting a task
+- End-to-end tests
+- Cloud deployment for the frontend and backend
+
+For this assessment, data is intentionally stored in memory as requested.
