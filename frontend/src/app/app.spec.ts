@@ -124,6 +124,6 @@ describe('App', () => {
 
     createComponent();
 
-    expect(fixture.nativeElement.textContent).toContain('Unable to load todos. Please try again.');
+    expect(fixture.nativeElement.textContent).toContain('Unable to load todos. Please check the API and try again.');
   });
 });
