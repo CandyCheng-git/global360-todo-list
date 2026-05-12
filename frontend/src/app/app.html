@@ -1,9 +1,10 @@
 <main class="todo-page">
   <section class="todo-panel" aria-labelledby="todo-heading">
     <header class="todo-header">
-      <div>
-        <p class="eyebrow">Global360 assessment</p>
+      <div class="heading-copy">
+        <p class="eyebrow">GLOBAL360 ASSESSMENT</p>
         <h1 id="todo-heading">TODO List</h1>
+        <p class="subtitle">Add, review, and remove tasks from your in-memory TODO list.</p>
       </div>
       <button class="secondary-button" type="button" (click)="loadTodos()" [disabled]="isLoading()">
         Refresh
@@ -17,7 +18,7 @@
           id="todo-title"
           type="text"
           [formControl]="titleControl"
-          placeholder="Add a task"
+          placeholder="What needs to be done?"
           autocomplete="off"
           [disabled]="isSaving()"
         />
@@ -34,7 +35,7 @@
     @if (isLoading()) {
       <p class="status">Loading todos...</p>
     } @else if (todos().length === 0) {
-      <p class="empty-state">No todos yet. Add one above to get started.</p>
+      <p class="empty-state">No todos yet. Add your first task above.</p>
     } @else {
       <ul class="todo-list" aria-label="Todo items">
         @for (todo of todos(); track todo.id) {
